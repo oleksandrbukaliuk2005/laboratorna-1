@@ -8,7 +8,7 @@ public class UIHelper {
         button.setForeground(Color.BLACK);
         button.setFocusPainted(false);
         button.setFont(new Font("Arial", Font.BOLD, 14));
-        button.setBorder(BorderFactory.createLineBorder(Color.WHITE, 2, true));
+        button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2, true));
         return button;
     }
 }
