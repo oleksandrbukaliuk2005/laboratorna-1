@@ -34,32 +34,51 @@ public class TaskManager {
         inputPanel.add(addButton, BorderLayout.SOUTH);
         frame.add(inputPanel, BorderLayout.NORTH);
 
-        JPanel buttonPanel = new JPanel(new GridLayout(3, 3, 10, 10));
+        // Updated layout with GridBagLayout for better control
+        JPanel buttonPanel = new JPanel(new GridBagLayout());
         buttonPanel.setBackground(new Color(180, 220, 240));
-
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 1;
+        
         removeButton = UIHelper.createStyledButton("Видалити Завдання");
         completeButton = UIHelper.createStyledButton("Завершено");
         inProgressButton = UIHelper.createStyledButton("В процесі");
         notStartedButton = UIHelper.createStyledButton("Не розпочато");
         clearButton = UIHelper.createStyledButton("Очистити Все");
-        sortButton = UIHelper.createStyledButton("Сортувати Завдання");
-        editButton = UIHelper.createStyledButton("Редагувати Завдання");
-        statsButton = UIHelper.createStyledButton("Статистика Завдань");
+        sortButton = UIHelper.createStyledButton("Сортувати");
+        editButton = UIHelper.createStyledButton("Редагувати");
+        statsButton = UIHelper.createStyledButton("Статистика");
+
+        // Add buttons to buttonPanel with GridBagConstraints
+        buttonPanel.add(removeButton, gbc);
+        gbc.gridx = 1;
+        buttonPanel.add(completeButton, gbc);
+        gbc.gridx = 2;
+        buttonPanel.add(inProgressButton, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        buttonPanel.add(notStartedButton, gbc);
+        gbc.gridx = 1;
+        buttonPanel.add(clearButton, gbc);
+        gbc.gridx = 2;
+        buttonPanel.add(sortButton, gbc);
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        buttonPanel.add(editButton, gbc);
+        gbc.gridx = 1;
+        buttonPanel.add(statsButton, gbc);
+
+        // Add exit button
         JButton exitButton = UIHelper.createStyledButton("Вийти");
-
         exitButton.setBackground(new Color(255, 100, 100));
-        exitButton.setForeground(Color.WHITE);
+        exitButton.setForeground(Color.BLACK);
         exitButton.addActionListener(e -> System.exit(0));
-
-        buttonPanel.add(removeButton);
-        buttonPanel.add(completeButton);
-        buttonPanel.add(inProgressButton);
-        buttonPanel.add(notStartedButton);
-        buttonPanel.add(clearButton);
-        buttonPanel.add(sortButton);
-        buttonPanel.add(editButton);
-        buttonPanel.add(statsButton);
-        buttonPanel.add(exitButton);
+        gbc.gridx = 2;
+        gbc.gridy = 3;
+        buttonPanel.add(exitButton, gbc);
 
         frame.add(buttonPanel, BorderLayout.SOUTH);
 
